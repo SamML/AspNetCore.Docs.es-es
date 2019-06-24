@@ -242,10 +242,25 @@ Una cadena delimitada por punto y coma de ensamblados de inicio de hospedaje par
 
 Aunque el valor de configuración predeterminado es una cadena vacía, los ensamblados de inicio de hospedaje incluyen siempre el ensamblado de la aplicación. Cuando se especifican los ensamblados de inicio de hospedaje, estos se agregan al ensamblado de la aplicación para que se carguen cuando la aplicación genera sus servicios comunes durante el inicio.
 
+::: moniker range=">= aspnetcore-1.0"
+
 ```csharp
 WebHost.CreateDefaultBuilder(args)
     .UseSetting(WebHostDefaults.HostingStartupAssembliesKey, "assembly1;assembly2")
 ```
+::: moniker-end
+
+::: moniker range=">= aspnetcore-3.0"
+
+```csharp
+WebHost.CreateDefaultBuilder(args)
+    .ConfigureAppConfiguration((hostingContext, config) =>
+    {
+        hostingContext.UseSetting(WebHostDefaults.HostingStartupAssembliesKey, "assembly1;assembly2");
+    })    
+```
+
+::: moniker-end
 
 ### <a name="https-port"></a>Puerto HTTPS
 
