@@ -254,10 +254,10 @@ WebHost.CreateDefaultBuilder(args)
 
 ```csharp
 WebHost.CreateDefaultBuilder(args)
-    .ConfigureAppConfiguration((hostingContext, config) =>
-    {
-        hostingContext.UseSetting(WebHostDefaults.HostingStartupAssembliesKey, "assembly1;assembly2");
-    })    
+     .ConfigureWebHostDefaults(webBuilder =>
+                {
+                    webBuilder.UseSetting(WebHostDefaults.HostingStartupAssembliesKey, "assembly1;assembly2") 
+                });  
 ```
 
 ::: moniker-end
